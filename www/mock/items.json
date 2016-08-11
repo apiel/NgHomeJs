@@ -1,0 +1,39 @@
+[
+    {
+        "name": "Modes",
+        "items": [
+            {
+                "name": "Away",
+                "icon": "walk",
+                "actionUrl": "#"
+            },
+            {
+                "name": "Day",
+                "icon": "sunny",
+                "actionUrl": "#"
+            },
+            {
+                "name": "Evening",
+                "icon": "moon",
+                "actionUrl": "#"
+            }
+        ]
+    },
+    {
+        "name": "Devices",
+        "items": [
+            {
+                "name": "Store",
+                "icon": "bookmark",
+                "actionUrl": "http://192.168.0.30/toggle",
+                "statusUrl": "http://192.168.0.30/status"
+            },
+            {
+                "name": "Light table",
+                "icon": "bulb",
+                "actionUrl": "http://127.0.0.1:3005/api/switch/toggle/chill",
+                "statusUrl": "http://127.0.0.1:3005/api/switch/status/chill"
+            }
+        ]
+    }
+]

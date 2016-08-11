@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-navbar>
+    <button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>MyHome</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+
+    <ion-list>
+      <template ngFor let-itemsBundle [ngForOf]="itemsBundles">
+          <ion-item-divider light>{{itemsBundle.name}}</ion-item-divider>
+          <ion-item *ngFor="let item of itemsBundle.items">
+            <ion-icon name="{{item.icon}}" item-left></ion-icon>
+            {{item.name}}
+            <ion-badge item-right *ngIf="item.statusUrl">Close</ion-badge>
+          </ion-item>
+      </template>
+    </ion-list>
+
+</ion-content>
