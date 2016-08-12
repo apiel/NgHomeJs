@@ -29,10 +29,34 @@
                 "statusUrl": "http://192.168.0.30/status"
             },
             {
-                "name": "Light table",
+                "name": "Spot light chillarea",
                 "icon": "bulb",
                 "actionUrl": "http://127.0.0.1:3005/api/switch/toggle/chill",
                 "statusUrl": "http://127.0.0.1:3005/api/switch/status/chill"
+            },
+            {
+                "name": "Light little table",
+                "icon": "bulb",
+                "actionUrl": "http://127.0.0.1:3005/api/switch/toggle/table",
+                "statusUrl": "http://127.0.0.1:3005/api/switch/status/table"
+            },
+            {
+                "name": "Spot climbing wall",
+                "icon": "bulb",
+                "actionUrl": "http://127.0.0.1:3005/api/switch/toggle/wall",
+                "statusUrl": "http://127.0.0.1:3005/api/switch/status/wall"
+            },
+            {
+                "name": "WC",
+                "icon": "bulb",
+                "actionUrl": "http://127.0.0.1:3005/api/switch/toggle/wc",
+                "statusUrl": "http://127.0.0.1:3005/api/switch/status/wc"
+            },
+            {
+                "name": "Spot kitchen",
+                "icon": "bulb",
+                "actionUrl": "http://127.0.0.1:3005/api/switch/toggle/kitchen",
+                "statusUrl": "http://127.0.0.1:3005/api/switch/status/kitchen"
             }
         ]
     }
