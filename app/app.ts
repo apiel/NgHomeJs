@@ -18,7 +18,6 @@ import {Home} from './pages/home/home';
 import {ListPage} from './pages/list/list';
 import { ItemBundleService } from './itemBundle.service';
 
-
 @Component({
   templateUrl: 'build/app.html',
   providers: [ItemBundleService]

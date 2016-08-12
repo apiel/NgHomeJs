@@ -15,8 +15,22 @@ export class Home implements OnInit {
     getItemsBundles() {
       this.itemBundleService.getItemsBundles()
                       .subscribe(
-                         itemsBundles => this.itemsBundles = itemsBundles,
+                         //itemsBundles => this.itemsBundles = itemsBundles,
+                         itemsBundles => this.parseItemsBundles(this, itemsBundles),
                          error =>  this.errorMessage = <any>error);
+    }
+    
+    parseItemsBundles(home: Home, itemsBundles: ItemBundle[]) {
+        for (let itemBundle of itemsBundles) {
+            for (let item of itemBundle.items) {
+                if (item.statusUrl) {
+                    item.statusObserver.subscribe(
+                                            status => item.status = status,
+                                            error =>  this.errorMessage = <any>error);
+                }
+            }
+        }
+        home.itemsBundles = itemsBundles;
     }
         
     ngOnInit() {

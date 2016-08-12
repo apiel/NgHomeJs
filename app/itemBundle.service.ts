@@ -1,31 +1,43 @@
 import { Injectable } from '@angular/core';
+
 import { Http, Response } from '@angular/http';
 
 import { Observable }     from 'rxjs/Observable';
 
 import { ItemBundle } from './itemBundle';
 
+import { ItemStatus } from './itemStatus';
+
 @Injectable()
 export class ItemBundleService {
-    constructor (private http: Http) {}
+    constructor(private http: Http) {}
     
     private itemsBundlesUrl = "mock/items.json";
     
     getItemsBundles() {
         return this.http.get(this.itemsBundlesUrl)
-                    .map(this.extractData)
+                    .map(res => this.extractData(res, this.http))
                     .catch(this.handleError);
     }
     
-    private extractData(res: Response) {
+    private extractData(res: Response, http: Http) {
         let body = res.json();
         let itemsBundles: ItemBundle[] = body || [];
         for(let itemBundle of itemsBundles) {
             for(let item of itemBundle.items) {
-                console.log(item);
+                if (item.statusUrl) {
+                    item.statusObserver = http.get(item.statusUrl)
+                                                .map(this.extractStatus)
+                                                .catch(this.handleError);
+                }
             }
         }
         return itemsBundles;
+    }
+    
+    private extractStatus(res: Response) {
+        let body: ItemStatus = res.json();
+        return body.status || null;        
     }
 
     private handleError (error: any) {
