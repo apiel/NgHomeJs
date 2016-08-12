@@ -27,10 +27,17 @@ export class Home implements OnInit {
     parseItemsBundles(home: Home, itemsBundles: ItemBundle[]) {
         for (let itemBundle of itemsBundles) {
             for (let item of itemBundle.items) {
-                home.getItemStatus(home, item);
+                home.getItemStatusWithInterval(home, item);
             }
         }
         home.itemsBundles = itemsBundles;
+    }
+    
+    getItemStatusWithInterval(home: Home, item: Item) {
+        if (item.statusUrl) {
+            home.getItemStatus(home, item);
+            setInterval(function(){ home.getItemStatus(home, item); }, 5000);            
+        }
     }
     
     getItemStatus(home: Home, item: Item) {
